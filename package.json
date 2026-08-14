@@ -1,0 +1,28 @@
+{
+  "name": "scp-planning-copilot",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Vue 3 supply chain planning copilot — pixi-gantt board plus streaming AI chat (Vercel AI SDK).",
+  "license": "MIT",
+  "author": "Yunhao Tao",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mizuno0237/scp-planning-copilot.git"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "pixi.js": "^8.9.2",
+    "vue": "^3.5.13"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.1",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.3",
+    "vue-tsc": "^2.2.0"
+  }
+}

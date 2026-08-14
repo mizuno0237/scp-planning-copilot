@@ -1,0 +1,33 @@
+:root {
+  --ink: #1a1c18;
+  --mist: #d8ddd3;
+  --board: #2a2f28;
+  --brass: #c6a039;
+  --ticket: #fff8e7;
+  --late: #b5462a;
+  --ok: #3f7d6a;
+  --font: 'Libre Franklin', system-ui, sans-serif;
+  --mono: 'IBM Plex Mono', ui-monospace, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  font-family: var(--font);
+  color: var(--ticket);
+  background: var(--board);
+}
+
+button,
+textarea {
+  font: inherit;
+}
