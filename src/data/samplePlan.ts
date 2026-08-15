@@ -1,7 +1,7 @@
 import type { GanttModel } from 'pixi-gantt';
 
 const HOUR = 3_600_000;
-const SHIFT_START = Date.UTC(2026, 7, 14, 6, 0, 0);
+export const SHIFT_START = Date.UTC(2026, 7, 14, 6, 0, 0);
 
 const LANES = [
   { id: 'cnc-12', label: 'CNC-12', stamp: 'MC-12' },

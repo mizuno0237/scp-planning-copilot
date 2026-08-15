@@ -19,7 +19,7 @@ const shiftLabel = '14 Aug 2026  ·  Day shift 06:00–22:00';
       <section class="board" aria-label="Resource schedule">
         <div class="board__rail">
           <span>Finite capacity</span>
-          <span>FS links · WO-1842 critical path</span>
+          <span>FS links · WO-1842 · tools can rewrite the sample</span>
         </div>
         <PlanningGantt />
       </section>

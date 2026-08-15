@@ -4,8 +4,8 @@ Vue 3 workbench for **finite-capacity supply chain planning**: a [pixi-gantt](ht
 
 | Day | Scope |
 | --- | --- |
-| **D1 (this commit)** | Vite + Vue 3 scaffold, sample Heijunka-style plan, pixi-gantt mounted in the board |
-| D2 | Planning tools + streaming chat (`@ai-sdk/vue`) |
+| D1 | Vite + Vue 3 scaffold, sample Heijunka-style plan, pixi-gantt mounted in the board |
+| **D2 (this commit)** | Planning tools + streaming dispatch pad (`lookupGlossary`, `getWorkOrder`, `explainCriticalPath`, `updateScheduleBlock`) |
 | D3 | Demo walkthrough + README polish |
 
 ## Quick start
@@ -24,6 +24,19 @@ Open http://localhost:5175
 ## Sample board
 
 Five resource lanes (CNC, assembly, QC, pack) with FS links on **WO-1842** so the critical path is visible without a live planner backend.
+
+## Planning tools (D2)
+
+The dispatch pad streams a local planner over the sample model. No API key. Writes stay on the demo board.
+
+| Tool | What it does |
+| --- | --- |
+| `lookupGlossary` | WO / FS / ATP / bottleneck / Heijunka / FAI |
+| `getWorkOrder` | Operations and UTC windows for a WO |
+| `explainCriticalPath` | FS chain mill → assembly → QC → pack |
+| `updateScheduleBlock` | Shift or stretch a block; gantt redraws |
+
+Try “What slips if CNC-12 loses two hours?” — CNC-12 mill stretches two hours and the pad flags the WO-1842 promise.
 
 ## License
 
