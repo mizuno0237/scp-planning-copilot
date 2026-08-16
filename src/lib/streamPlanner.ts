@@ -101,10 +101,10 @@ export async function streamPlannerTurn(
     return;
   }
 
-  if (/\b(slip|lose|lost|late|delay|stretch|shift|move|push|update|reschedule)\b/.test(lower)) {
+  if (/\b(slips?|loses?|lost|late|delay|stretch|shift|move|push|update|reschedule)\b/.test(lower)) {
     const wo = pickWorkOrder(text);
     const hours = pickHours(text);
-    const stretch = /\b(lose|lost|stretch|extra)\b/.test(lower);
+    const stretch = /\b(loses?|lost|stretch|extra)\b/.test(lower);
     const result = runUpdateScheduleBlock({
       workOrder: wo,
       stretchHours: stretch ? hours : 0,

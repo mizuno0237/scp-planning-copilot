@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "description": "Vue 3 supply chain planning copilot — pixi-gantt board plus streaming AI chat (Vercel AI SDK).",
+  "description": "Vue 3 supply chain planning copilot — pixi-gantt board plus a streaming dispatch pad with typed planning tools.",
   "license": "MIT",
   "author": "Yunhao Tao",
   "repository": {
