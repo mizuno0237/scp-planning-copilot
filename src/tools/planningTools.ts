@@ -1,5 +1,5 @@
-import { applyBlockChangeToModel } from 'pixi-gantt';
-import type { GanttModel, GanttSegment } from 'pixi-gantt';
+import { applyBlockChangeToModel } from '../../../pixi-gantt/src/core/applyBlockChange';
+import type { GanttModel, GanttSegment } from '../../../pixi-gantt/src/core/types';
 import { lookupGlossary } from '../data/glossary';
 import { getPlanModel, setPlanModel } from '../data/planStore';
 import { SHIFT_START } from '../data/samplePlan';

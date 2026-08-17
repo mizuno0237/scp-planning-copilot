@@ -21,6 +21,10 @@ npm run dev
 
 Open http://localhost:5175
 
+```bash
+npm test
+```
+
 No API key. The pad streams a local tool-loop planner so the demo runs offline.
 
 `pixi-gantt` is not on the npm registry yet. This app resolves it from `../pixi-gantt/src` via the Vite alias in `vite.config.ts`. After `npm publish` of pixi-gantt, switch the dependency to the registry package.
