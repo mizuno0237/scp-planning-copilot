@@ -13,7 +13,7 @@ type ChatMessage = {
 const prompts = [
   'Which work order is on the critical path?',
   'What slips if CNC-12 loses two hours?',
-  'Promise date for WO-1842?',
+  'Where is the slack on this board?',
   'Define finite capacity',
 ];
 
@@ -86,7 +86,7 @@ function onChip(line: string) {
       <h2>Dispatch pad</h2>
     </header>
     <p class="dispatch__note">
-      Streaming planner over four tools. Schedule writes land on the sample gantt only — no live factory.
+      Streaming planner over five tools. Schedule writes land on the sample gantt only — no live factory.
     </p>
     <ul class="dispatch__tools" aria-label="Planning tools">
       <li v-for="tool in PLANNING_TOOLS" :key="tool.name">

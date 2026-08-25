@@ -10,7 +10,8 @@ export type ToolName =
   | 'lookupGlossary'
   | 'getWorkOrder'
   | 'explainCriticalPath'
-  | 'updateScheduleBlock';
+  | 'updateScheduleBlock'
+  | 'reportResourceSlack';
 
 export type ToolTrace = {
   name: ToolName;
@@ -23,6 +24,7 @@ export const PLANNING_TOOLS: Array<{ name: ToolName; description: string }> = [
   { name: 'getWorkOrder', description: 'List operations and times for a work order on the sample plan.' },
   { name: 'explainCriticalPath', description: 'Walk the FS chain that sets the WO-1842 promise.' },
   { name: 'updateScheduleBlock', description: 'Shift or stretch a sample block; the gantt redraws immediately.' },
+  { name: 'reportResourceSlack', description: 'Hours loaded vs the 16h sample horizon on each lane — finite-capacity slack.' },
 ];
 
 function formatClock(ms: number): string {
@@ -126,6 +128,23 @@ export function runUpdateScheduleBlock(input: {
     parts.push('FS successors on WO-1842 (assembly, QC, pack) are now at risk of a broken promise.');
   }
   return parts.join(' ');
+}
+
+export function runResourceSlack(): string {
+  const model = getPlanModel();
+  const start = SHIFT_START;
+  const end = model.timeRange.max;
+  const horizon = (end - start) / HOUR;
+  const lines = model.rows.map((row) => {
+    const loaded =
+      model.segments
+        .filter((seg) => seg.rowId === row.id)
+        .reduce((sum, seg) => sum + (seg.endTime - seg.startTime), 0) / HOUR;
+    const slack = Math.round((horizon - loaded) * 10) / 10;
+    const util = Math.round((loaded / horizon) * 1000) / 10;
+    return `${row.label}: ${loaded}h loaded / ${horizon}h horizon · ${slack}h slack · ${util}%`;
+  });
+  return [`Finite-capacity slack on the sample shift (${horizon}h horizon, 06:00–22:00 UTC).`, ...lines].join('\n');
 }
 
 export function describeBoard(): string {

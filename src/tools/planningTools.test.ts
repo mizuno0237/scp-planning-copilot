@@ -4,6 +4,7 @@ import {
   runExplainCriticalPath,
   runGetWorkOrder,
   runLookupGlossary,
+  runResourceSlack,
   runUpdateScheduleBlock,
 } from './planningTools';
 
@@ -62,5 +63,14 @@ describe('updateScheduleBlock', () => {
     const mill = getPlanModel().segments.find((seg) => seg.blockId === 'block-1');
     const hours = (mill!.blockEndTime - mill!.blockStartTime) / 3_600_000;
     expect(runUpdateScheduleBlock({ blockId: 'block-1', stretchHours: -hours })).toMatch(/Refused/);
+  });
+});
+
+describe('reportResourceSlack', () => {
+  it('shows CNC-12 mill plus flange hours against the 16h horizon', () => {
+    const text = runResourceSlack();
+    expect(text).toMatch(/16h horizon/);
+    expect(text).toMatch(/CNC-12: 7h loaded/);
+    expect(text).toMatch(/9h slack/);
   });
 });

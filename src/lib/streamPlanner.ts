@@ -4,6 +4,7 @@ import {
   runExplainCriticalPath,
   runGetWorkOrder,
   runLookupGlossary,
+  runResourceSlack,
   runUpdateScheduleBlock,
   type ToolTrace,
 } from '../tools/planningTools';
@@ -84,6 +85,13 @@ export async function streamPlannerTurn(
     return;
   }
 
+  if (/\b(slack|idle hours|utilization|remaining capacity|free hours)\b/.test(lower)) {
+    const result = runResourceSlack();
+    emitTool(onEvent, 'reportResourceSlack', { horizonHours: 16 }, result);
+    await emitText(result, onEvent, signal);
+    return;
+  }
+
   if (/\b(glossary|what is|what's|define|mean by|atp|mrp|mps|heijunka|fai|cmm|finite capacity|bottleneck)\b/.test(lower)) {
     const term = text.replace(/^(what is|what's|define|mean by)\s+/i, '');
     const result = runLookupGlossary(term);
@@ -129,7 +137,7 @@ export async function streamPlannerTurn(
   const path = runExplainCriticalPath();
   emitTool(onEvent, 'explainCriticalPath', { workOrder: 'WO-1842' }, path);
   await emitText(
-    `${overview}\n\n${path}\n\nTry: “What slips if CNC-12 loses two hours?” or “Define ATP.”`,
+    `${overview}\n\n${path}\n\nTry: “Where is the slack on this board?” or “Define ATP.”`,
     onEvent,
     signal,
   );

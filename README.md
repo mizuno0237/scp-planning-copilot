@@ -54,6 +54,7 @@ flowchart LR
     T2[getWorkOrder]
     T3[explainCriticalPath]
     T4[updateScheduleBlock]
+    T5[reportResourceSlack]
   end
   STORE[planStore]
   PAD --> PLAN
@@ -61,6 +62,7 @@ flowchart LR
   PLAN --> T2
   PLAN --> T3
   PLAN --> T4
+  PLAN --> T5
   T4 --> STORE
   STORE --> BOARD
 ```
@@ -83,6 +85,7 @@ The loop shape matches Vercel AI SDK tool calling (tool → result → stream). 
 | `getWorkOrder` | Operations and UTC windows for a WO |
 | `explainCriticalPath` | FS chain mill → assembly → QC → pack |
 | `updateScheduleBlock` | Shift or stretch a block; gantt redraws |
+| `reportResourceSlack` | Loaded hours vs 16h horizon on each lane |
 
 ## Sample board
 
