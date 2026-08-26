@@ -5,6 +5,7 @@ Vue 3 workbench for **finite-capacity supply chain planning**: a [pixi-gantt](ht
 A planner asks in English. The pad calls typed tools. Writes land on the sample gantt — not a live factory.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![CI](https://github.com/mizuno0237/scp-planning-copilot/actions/workflows/ci.yml/badge.svg)](https://github.com/mizuno0237/scp-planning-copilot/actions/workflows/ci.yml)
 
 **Public sprint** · D1–D3 (08-14 → 08-16) · About paste: [`docs/GITHUB-ABOUT.md`](docs/GITHUB-ABOUT.md)
 
@@ -13,8 +14,10 @@ A planner asks in English. The pad calls typed tools. Writes land on the sample 
 ## Quick start
 
 ```bash
-# sibling of pixi-gantt (Vite aliases the library source until it is on npm)
-cd GitHub-project/scp-planning-copilot
+# clone both as siblings — Vite aliases pixi-gantt from ../pixi-gantt
+git clone https://github.com/mizuno0237/pixi-gantt.git
+git clone https://github.com/mizuno0237/scp-planning-copilot.git
+cd scp-planning-copilot
 npm install
 npm run dev
 ```
